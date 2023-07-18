@@ -1,0 +1,39 @@
+image: atlassian/default-image:2
+
+pipelines:
+  branches:
+    develop:
+      - step:
+          name: Asahi Sales Assistant - React App Build
+          caches:
+            - node
+          image: node:14.15.4-stretch-slim
+          script:
+            - npm install
+            - unset CI
+            - npm run build
+
+          artifacts:
+            - build/**
+      - step:
+          name: Asahi Sales Assistant - Deploy to S3 bucket
+          script:
+            - pipe: atlassian/aws-s3-deploy:0.3.8
+              variables:
+                AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID
+                AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
+                AWS_DEFAULT_REGION: "us-east-1"
+                S3_BUCKET: $S3_BUCKET
+                LOCAL_PATH: "build"
+                ACL: "private"
+                CACHE_CONTROL: "max-age=0,no-cache,no-store,must-revalidate"
+                DELETE_FLAG: "true"
+      - step:
+          name: Asahi Sales Assistant - Cloudfront Distribution Invalidation
+          script:
+            - pipe: atlassian/aws-cloudfront-invalidate:0.6.0
+              variables:
+                AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID
+                AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
+                AWS_DEFAULT_REGION: "us-east-1"
+                DISTRIBUTION_ID: $DISTRIBUTION_ID
