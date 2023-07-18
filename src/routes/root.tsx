@@ -7,14 +7,14 @@ export default function Root() {
 
     return (
         <div className=" relative  md:mx-20 overflow-hidden">
-            <div className="z-10 my-5 mx-2 w-full ">
+            <div className=" fixed top-5 z-10 mb-5 w-full ">
                 <Header />
             </div>
-            <div className="flex gap-2 mt-5">
-                <div className="  fixed z-10 bottom-0 md:relative w-full md:w-auto ">
+            <div className="flex gap-2 mt-20 h-screen">
+                <div className="  fixed z-10 bottom-0 md:relative w-full md:w-auto  ">
                     <Navigation />
                 </div>
-                <div className="w-full ">
+                <div className="w-full overflow-y-auto ">
                     <Outlet />
                 </div>
 

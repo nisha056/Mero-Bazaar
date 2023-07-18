@@ -2,7 +2,7 @@ import logo from "../assets/logo.png"
 const Header = () => {
     return (
         <>
-            <div className="w-full flex gap-3 items-center">
+            <div className="w-full flex gap-1 items-center mx-2">
                 <img
                     src={logo}
                     alt="Logo"
