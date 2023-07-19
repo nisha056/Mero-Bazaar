@@ -4,7 +4,7 @@ pipelines:
   branches:
     develop:
       - step:
-          name: Asahi Sales Assistant - React App Build
+          name: New app - React App Build
           caches:
             - node
           image: node:14.15.4-stretch-slim
@@ -16,7 +16,7 @@ pipelines:
           artifacts:
             - build/**
       - step:
-          name: Asahi Sales Assistant - Deploy to S3 bucket
+          name: New App - Deploy to S3 bucket
           script:
             - pipe: atlassian/aws-s3-deploy:0.3.8
               variables:
@@ -29,7 +29,7 @@ pipelines:
                 CACHE_CONTROL: "max-age=0,no-cache,no-store,must-revalidate"
                 DELETE_FLAG: "true"
       - step:
-          name: Asahi Sales Assistant - Cloudfront Distribution Invalidation
+          name: New app
           script:
             - pipe: atlassian/aws-cloudfront-invalidate:0.6.0
               variables:

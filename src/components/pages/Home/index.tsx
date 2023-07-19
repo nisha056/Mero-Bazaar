@@ -5,31 +5,33 @@ import ProductCard from "./ProductCard";
 function Home() {
   const [products, setProducts] = useState<any>([]);
   const [images, setImages] = useState<any>([]);
-
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
-
     axios
-      .get("https://dummyjson.com/products?limit=100&skip=0&select=title,price")
+      .get("https://dummyjson.com/products")
       .then((res) => {
         setProducts(res.data.products);
+        setLoading(false);
       })
       .catch((err) => {
         console.log(err);
         setProducts([])
+        setLoading(false);
       });
-
     axios
       .get("https://jsonplaceholder.typicode.com/photos")
       .then((response) => {
         setImages(response.data);
+        setLoading(false);
       })
 
       .catch((err) => {
         console.log(err);
+        setLoading(false);
       });
   }, [products, images]);
 
-  if (!Array.isArray(products) || !Array.isArray(images)) {
+  if (loading) {
     return <div>Loading...</div>;
   }
   return (
@@ -38,7 +40,7 @@ function Home() {
         {products.length === 0 ? (
           <div>No products available</div>
         ) : (
-          products.map((product, index) => {
+          products.map((product: any, index: any) => {
             const image = images[index];
             return <ProductCard key={index} details={product} imageUrl={image.url} />;
           })

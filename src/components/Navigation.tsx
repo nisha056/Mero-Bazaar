@@ -24,7 +24,7 @@ function Navigation() {
     navigate(`/${path}`);
   };
   return (
-    <div className="flex flex-row justify-center md:justify-start items-center md:flex-col gap-4 bg-slate-50 md:w-[14rem]  py-4 px-6">
+    <div className="flex flex-row justify-center md:justify-start items-center md:flex-col gap-4 bg-slate-50 md:w-[14rem] h-full py-4 px-6">
       <div className="flex flex-row md:flex-col gap-10 md:gap-4">
         <button onClick={() => handleNavigate("home")}>
           <div className="flex items-center gap-2 ">
