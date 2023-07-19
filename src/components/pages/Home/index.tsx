@@ -42,7 +42,7 @@ function Home() {
         ) : (
           products.map((product: any, index: any) => {
             const image = images[index];
-            return <ProductCard key={index} details={product} imageUrl={image.url} />;
+            return <ProductCard key={index} details={product} imageUrl={image?.url} />;
           })
         )}
       </main>
