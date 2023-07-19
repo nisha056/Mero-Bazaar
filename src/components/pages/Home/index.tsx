@@ -29,7 +29,7 @@ function Home() {
         console.log(err);
         setLoading(false);
       });
-  });
+  }, []);
 
   if (loading) {
     return <div>Loading...</div>;
