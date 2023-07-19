@@ -6,7 +6,7 @@ const Notification = () => {
         //     )
         // })
         <>
-            Hello</>
+            In progress..</>
 
     )
 };

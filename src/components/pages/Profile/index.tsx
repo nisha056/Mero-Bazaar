@@ -1,7 +1,7 @@
 const Profile = () => {
     return (
         <>
-            Profile</>
+            In progress..</>
     )
 };
 export default Profile;

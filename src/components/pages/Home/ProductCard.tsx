@@ -12,13 +12,12 @@ interface ProductCardProps {
 function ProductCard({ details, imageUrl }: ProductCardProps) {
   const [isIntersecting, setIsIntersecting] = useState(false);
   const imageRef = useRef<HTMLImageElement>(null);
-
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([value]) => {
         setIsIntersecting(value.isIntersecting);
       },
-      { threshold: 0.2 }
+      { threshold: 0.5 }
     );
 
     if (imageRef.current) {
