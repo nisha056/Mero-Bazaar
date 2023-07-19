@@ -8,7 +8,7 @@ function Home() {
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     axios
-      .get("https://dummyjson.com/products")
+      .get("https://dummyjson.com/products?limit=100")
       .then((res) => {
         setProducts(res.data.products);
         setLoading(false);
@@ -29,7 +29,7 @@ function Home() {
         console.log(err);
         setLoading(false);
       });
-  }, [products, images]);
+  });
 
   if (loading) {
     return <div>Loading...</div>;

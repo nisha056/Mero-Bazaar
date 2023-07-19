@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import "./index.css";
-import { MantineProvider, createEmotionCache } from "@mantine/core";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Root from "./routes/root";
 import ErrorPage from "./error-page";
@@ -42,19 +41,17 @@ const router = createBrowserRouter([
   },
 ]);
 
-const myCache = createEmotionCache({
-  key: "mantine",
-  prepend: false,
-});
 const rootElement = document.getElementById("root") as HTMLElement;
 ReactDOM.render(
   <React.StrictMode>
-    <MantineProvider emotionCache={myCache}>
-      <RouterProvider router={router} />
-    </MantineProvider>
+    <RouterProvider router={router} />
   </React.StrictMode>,
   rootElement
 );
+
+
+
+
 
 
 
