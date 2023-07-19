@@ -18,7 +18,7 @@ function ProductCard({ details, imageUrl }: ProductCardProps) {
       ([value]) => {
         setIsIntersecting(value.isIntersecting);
       },
-      { threshold: 0.2 }
+      { threshold: 1 }
     );
 
     if (imageRef.current) {

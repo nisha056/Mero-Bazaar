@@ -34,6 +34,8 @@ function Home() {
   if (loading) {
     return <div>Loading...</div>;
   }
+  // alert(window.innerHeight);
+  // alert(document.documentElement.scrollHeight)
   return (
     <>
       <main className="w-full flex-col gap-5">
