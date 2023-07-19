@@ -1,5 +1,5 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
+import React from 'react';
+import ReactDOM from 'react-dom';
 import "./index.css";
 import { MantineProvider, createEmotionCache } from "@mantine/core";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
@@ -46,11 +46,15 @@ const myCache = createEmotionCache({
   key: "mantine",
   prepend: false,
 });
-
-ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
+const rootElement = document.getElementById("root") as HTMLElement;
+ReactDOM.render(
   <React.StrictMode>
     <MantineProvider emotionCache={myCache}>
       <RouterProvider router={router} />
     </MantineProvider>
-  </React.StrictMode>
+  </React.StrictMode>,
+  rootElement
 );
+
+
+
